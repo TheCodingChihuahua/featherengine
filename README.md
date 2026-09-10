@@ -33,6 +33,4 @@ Then import it in your game with:
 ```python
 import feather
 ```
-
-# featherengine
-
+Special thanks to Hack Club! They didn't support this project, but they're awesome anyhow. [Visit the Hack Club website](www.hackclub.com)

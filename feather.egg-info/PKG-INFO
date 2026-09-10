@@ -1,0 +1,52 @@
+Metadata-Version: 2.4
+Name: feather
+Version: 26.8.2
+Summary: A pygame utility module
+Author: TheCodingChihuahua
+License-Expression: GPL-3.0-only
+Requires-Python: >=3.14
+Description-Content-Type: text/markdown
+Requires-Dist: pygame>=2.5
+
+# Feather Engine
+
+Feather is a small Pygame utility module for beginner-friendly 2D games.
+
+## Example
+
+```python
+import feather
+
+player = None
+
+
+def init():
+    global player
+    player = feather.Sprite("assets/player.png")
+
+
+def update():
+    if feather.key_pressed("ENTER"):
+        player.image = "assets/playerdance.png"
+    if feather.key_pressed("BACKSPACE"):
+        player.image = "assets/playercry.png"
+    if feather.key_pressed("ESCAPE"):
+        feather.end()
+
+
+feather.run(init, update)
+```
+
+`update` runs once per frame at up to 60 frames per second. Image paths are resolved relative to the game's current working directory.
+
+## Installation
+
+```powershell
+python -m pip install feather
+```
+
+Then import it in your game with:
+
+```python
+import feather
+```

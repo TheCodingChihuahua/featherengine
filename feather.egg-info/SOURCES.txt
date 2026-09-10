@@ -1,0 +1,8 @@
+README.md
+feather.py
+pyproject.toml
+feather.egg-info/PKG-INFO
+feather.egg-info/SOURCES.txt
+feather.egg-info/dependency_links.txt
+feather.egg-info/requires.txt
+feather.egg-info/top_level.txt

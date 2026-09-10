@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "feather-engine"
+version = "26.9.2"
+description = "A pygame utility module"
+readme = "README.md"
+requires-python = ">=3.14"
+authors = [{ name = "TheCodingChihuahua" }]
+license = "GPL-3.0-only"
+dependencies = ["pygame-ce>=2.5"]

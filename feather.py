@@ -1,7 +1,9 @@
 import os
+import sys
 import pygame
-screen = None
 
+# some variable declaration #############
+screen = None
 _running = True
 _elements = []
 _animations = []
@@ -53,7 +55,7 @@ def _key_name(key):
     name = str(key).upper()
     return _key_aliases.get(name, name)
 
-# run ##############################################################################################################
+# game loop ##############################################################################################################
 def run(_init, _update):
     global _running, screen_center_x, screen_center_y, screen_left, screen_right, screen_top, screen_bottom, screen
     _running = True
@@ -115,18 +117,18 @@ def run(_init, _update):
         
         pygame.display.flip()
         clock.tick(framerate)
-
-
 def end():
     global _running
     _running = False
-
-
-
 def add_object(obj):
     _elements.append(obj)
     _sort_elements()
+def create_object(objclass, name: str, parameters: list):
+    obj = objclass(*parameters)
+    user_frame = sys._getframe(1)
+    user_frame.f_globals[name] = obj
 
+# Sprite ############################################################
 class Sprite:
     def __init__(self, image_path, x=0, y=0, width=None, height=None, layer=0, flip_x=False, flip_y=False, animations=None):
         file_extension = os.path.splitext(image_path)[1].lower().lstrip('.')
@@ -332,6 +334,7 @@ class Sprite:
     def colliding_with(self, other):
         return self.rect.colliderect(other.rect) if isinstance(other, Sprite) else False
 
+# Label #############################################################
 class Label:
     def __init__(self, text='', x=0, y=0, layer=0, size=36, color='black', font_name=None, rounded=True):
         self._x = x
@@ -426,6 +429,7 @@ class Label:
         self._rounded = value
         self._render()
 
+# Rectangle #########################################################
 class Rectangle:
     def __init__(self, x=0, y=0, layer=0, width=30, height=30, color=(255, 255, 255)):
         self._x = x
@@ -497,6 +501,7 @@ class Rectangle:
             self._layer = 0
         _sort_elements()
 
+# Circle ############################################################
 class Circle:
     def __init__(self, x=0, y=0, layer=0, radius=15, color=(255, 255, 255)):
         self._x = x
@@ -550,6 +555,7 @@ class Circle:
             self._layer = 0
         _sort_elements()
 
+# Button ############################################################
 class Button:
     def __init__(self, idleframe, clickedframe, hoveredframe, x=0, y=0, layer=0, width=None, height=None, istoggle=False):
         self._idleframe = idleframe
